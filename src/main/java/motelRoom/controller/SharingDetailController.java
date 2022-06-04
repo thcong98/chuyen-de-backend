@@ -20,26 +20,32 @@ public class SharingDetailController {
     }
 
     /** Get all sharing_detail **/
-    @GetMapping
+    @GetMapping("")
     public List<SharingDetailDetailDto> findAll(){
         return sharingDetailService.findAll();
     }
 
+//    /** Get sharing_detail by roomid**/
+//    @GetMapping("/room/{id}")
+//    public List<SharingDetailDetailDto> findAllByRoomId(@PathVariable UUID id) {
+//        return sharingDetailService.getAllByRoomId(id);
+//    }
+
     /** Get sharing_detail by sharing_detail_id **/
-    @GetMapping("/{sharingDetailId}")
+    @GetMapping("/{id}")
     public ResponseEntity<SharingDetailDetailDto> findById(@PathVariable UUID sharingDetailId) {
         return ResponseEntity.ok(sharingDetailService.findById(sharingDetailId));
     }
 
     /** Create sharing_detail **/
-    @PostMapping
+    @PostMapping("")
     public ResponseEntity<SharingDetailDetailDto> createSharingDetail(@Valid @RequestBody SharingDetailCreateDto sharingDetailCreateDto) {
         ResponseEntity responseEntity = ResponseEntity.status(HttpStatus.ACCEPTED).body(sharingDetailService.createSharingDetail(sharingDetailCreateDto));
-        return responseEntity;
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(sharingDetailService.createSharingDetail(sharingDetailCreateDto));
     }
 
     /** Update sharing_detail **/
-    @PutMapping("/{sharingDetailId}")
+    @PutMapping("/{id}")
     public ResponseEntity<SharingDetailDetailDto> update(@PathVariable UUID sharingDetailId,
                                                          @Valid @RequestBody SharingDetailDetailDto sharingDetailDetailDto) {
         SharingDetailDetailDto sharingDetailDetailDtoUpdate = sharingDetailService.updateSharingDetail(sharingDetailId, sharingDetailDetailDto);
@@ -47,9 +53,9 @@ public class SharingDetailController {
     }
 
     /** Delete sharing_detail by sharing_detail_id **/
-    @DeleteMapping("/{sharingDetailId}")
-    public ResponseEntity deleteById(@PathVariable UUID sharingDetailId) {
-        sharingDetailService.deleteById(sharingDetailId);
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable UUID id) {
+        sharingDetailService.deleteById(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

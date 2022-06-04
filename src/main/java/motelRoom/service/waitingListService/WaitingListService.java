@@ -11,6 +11,7 @@ public interface WaitingListService {
     List<WaitingListDetailDto> getAllByUserId(UUID id);
     List<WaitingListDetailDto> getAllWaitingList();
     List<WaitingListBasicDto> getListByUserId(UUID id);
+    List<WaitingListDetailDto> getAllByRoomId(UUID id);
     WaitingListDetailDto addWaitingList(WaitingListCreateDto createDto);
     void deleteWaitingList(UUID id);
 }

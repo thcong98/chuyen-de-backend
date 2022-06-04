@@ -1,5 +1,6 @@
 package motelRoom.service.roomSharingService;
 
+import motelRoom.dto.room.RoomDetailDto;
 import motelRoom.dto.roomSharing.RoomSharingCreateDto;
 import motelRoom.dto.roomSharing.RoomSharingDetailDto;
 import motelRoom.dto.sharingDetail.SharingDetailCreateDto;
@@ -47,6 +48,8 @@ public class RoomSharingServiceImpl implements RoomSharingService{
         }
     }
 
+
+
     /**
      * Show list RoomSharing
      **/
@@ -80,14 +83,14 @@ public class RoomSharingServiceImpl implements RoomSharingService{
      * Delete RoomSharing by sharingId
      **/
     @Override
-    public String deleteById(UUID sharingId) {
+    public String deleteById(UUID id) {
         try {
-            roomSharingRepository.deleteById(sharingId);
+            roomSharingRepository.deleteById(id);
             return "Deleted";
         }
         catch (Exception e)
         {
-            throw new NotAcceptable("can't find RoomSharing with id: " + sharingId +" to delete!");
+            throw new NotAcceptable("can't find RoomSharing with id: " + id +" to delete!");
         }
     }
 
@@ -95,10 +98,10 @@ public class RoomSharingServiceImpl implements RoomSharingService{
      * Create RoomSharing
      **/
     @Override
-    public String createRoomSharing(RoomSharingCreateDto roomSharingCreateDto) {
+    public RoomSharingDetailDto createRoomSharing(RoomSharingCreateDto roomSharingCreateDto) {
         UUID room = roomSharingCreateDto.getRoomId();
         if(room == null){
-            return "Please enter information";
+            throw new NotAcceptable("bạn cần nhập đủ thông tin" );
         }
         else {
             List<SharingDetailCreateDto> ListDto = roomSharingCreateDto.getSharingDetails();
@@ -106,7 +109,7 @@ public class RoomSharingServiceImpl implements RoomSharingService{
             {
                 SharingDetailEntity user = repository.findByUserId(dto.getUserId());
                 if (user != null) {
-                    return "User ID has existed!";
+                    throw new NotAcceptable(" Id user đã tồn tại");
                 }
             }
             RoomSharingEntity roomSharingEntity = roomSharingMapper.fromRoomSharingCreateDto(roomSharingCreateDto);
@@ -116,7 +119,8 @@ public class RoomSharingServiceImpl implements RoomSharingService{
                 sharingDetailCreateDto.setRole("Key");
                 sharingDetailService.createSharingDetail(sharingDetailCreateDto);
             }
-            return "Created";
+            RoomSharingDetailDto roomSharingDetailDto = roomSharingMapper.fromEntityToDto(roomSharingCreateEntity);
+            return roomSharingDetailDto;
         }
     }
 }

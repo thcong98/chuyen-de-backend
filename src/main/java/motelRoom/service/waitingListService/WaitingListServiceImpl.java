@@ -1,11 +1,14 @@
 package motelRoom.service.waitingListService;
 
+import motelRoom.dto.sharingDetail.SharingDetailCreateDto;
 import motelRoom.dto.waitingList.WaitingListBasicDto;
 import motelRoom.dto.waitingList.WaitingListCreateDto;
 import motelRoom.dto.waitingList.WaitingListDetailDto;
+import motelRoom.entity.SharingDetailEntity;
 import motelRoom.entity.WaitingListEntity;
 import motelRoom.mapper.WaitingListMapper;
 import motelRoom.repository.WaitingListRepository;
+import motelRoom.service.exceptionService.NotAcceptable;
 import motelRoom.service.exceptionService.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +63,20 @@ public class WaitingListServiceImpl implements WaitingListService{
     }
 
     /**
+     * get all room in Waiting List by id
+     * @param id
+     * @return
+     */
+    @Override
+    public List<WaitingListDetailDto> getAllByRoomId(UUID id) {
+        List<WaitingListDetailDto> list = mapper.fromEntitiesToDetailDtos(repository.findByRoomIdOrderByDateTimeDesc(id));
+        if(list.isEmpty()){
+            throw new NotFoundException("Not find");
+        }
+        return list;
+    }
+
+    /**
      * add room to Waiting List
      * @param waitingListCreateDto
      * @return
@@ -69,8 +86,9 @@ public class WaitingListServiceImpl implements WaitingListService{
     {
         WaitingListEntity entity = mapper.fromDtoCreateEntity(waitingListCreateDto);
         entity.setDateTime(LocalDateTime.now());
-        WaitingListEntity entitySave = repository.save(entity);
-        return mapper.fromEntityToDetailDto(entitySave);
+
+            WaitingListEntity entitySave = repository.save(entity);
+            return mapper.fromEntityToDetailDto(entitySave);
     }
 
     /**

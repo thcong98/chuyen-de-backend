@@ -38,4 +38,12 @@ public class SharingDetailEntity {
     @ToString.Exclude
     @JsonBackReference
     private RoomSharingEntity roomSharing;
+
+    /**relationship many sharingdetail one user**/
+    @ManyToOne
+    @JoinColumn(name = "user_id",insertable = false,updatable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
+    private UserEntity userEntity;
 }

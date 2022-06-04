@@ -3,10 +3,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import motelRoom.entity.addressEntity.WardEntity;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -38,4 +41,11 @@ public class WaitingListEntity {
     @ToString.Exclude
     @JsonBackReference
     private RoomEntity roomEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id",insertable = false,updatable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
+    private UserEntity userEntity;
 }

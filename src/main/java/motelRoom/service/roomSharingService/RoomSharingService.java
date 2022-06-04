@@ -7,8 +7,9 @@ import java.util.UUID;
 
 public interface RoomSharingService {
     RoomSharingDetailDto findById(UUID sharingId);
+
     List<RoomSharingDetailDto> getAllRoomSharing();
     RoomSharingDetailDto updateRoomSharing(UUID sharingId, RoomSharingDetailDto roomSharingDetailDto);
-    String deleteById(UUID sharingId);
-    String createRoomSharing(RoomSharingCreateDto roomSharingCreateDto);
+    String deleteById(UUID id);
+    RoomSharingDetailDto createRoomSharing(RoomSharingCreateDto roomSharingCreateDto);
 }

@@ -1,5 +1,6 @@
 package motelRoom.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
@@ -34,4 +35,12 @@ public class RoomSharingEntity {
     @ToString.Exclude
     private List<SharingDetailEntity> sharingDetails
             =new ArrayList<SharingDetailEntity>();
+
+    /**relationship many sharingdetail one room**/
+    @ManyToOne
+    @JoinColumn(name = "room_id",insertable = false,updatable = false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JsonBackReference
+    private RoomEntity roomEntity;
 }

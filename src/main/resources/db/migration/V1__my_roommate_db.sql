@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `district`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `district` (
-                            `district_id` int NOT NULL,
-                            `name_district` varchar(100) DEFAULT NULL,
-                            `prefix_district` varchar(20) DEFAULT NULL,
-                            `province_id` int DEFAULT NULL,
-                            PRIMARY KEY (`district_id`),
-                            KEY `fk_province_district` (`province_id`),
-                            CONSTRAINT `fk_province_district` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`)
+  `district_id` int NOT NULL,
+  `name_district` varchar(100) DEFAULT NULL,
+  `prefix_district` varchar(20) DEFAULT NULL,
+  `province_id` int DEFAULT NULL,
+  PRIMARY KEY (`district_id`),
+  KEY `fk_province_district` (`province_id`),
+  CONSTRAINT `fk_province_district` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,12 +51,14 @@ DROP TABLE IF EXISTS `document`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `document` (
-                            `doccument_id` varchar(40) NOT NULL,
-                            `parent_id` varchar(40) DEFAULT NULL,
-                            `parent_type` tinyint(1) DEFAULT NULL,
-                            `url` varchar(255) NOT NULL,
-                            `type_url` tinyint(1) DEFAULT NULL,
-                            PRIMARY KEY (`doccument_id`)
+  `doccument_id` varchar(40) NOT NULL,
+  `parent_id` varchar(40) DEFAULT NULL,
+  `parent_type` tinyint(1) DEFAULT NULL,
+  `url` varchar(255) NOT NULL,
+  `type_url` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`doccument_id`),
+  KEY `FK3djep7vip18jg4gjaysp04766` (`parent_id`),
+  CONSTRAINT `FK3djep7vip18jg4gjaysp04766` FOREIGN KEY (`parent_id`) REFERENCES `table_room` (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -66,7 +68,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES ('0cded3ea-b184-11ec-b909-0242ac120002','08cf7798-b182-11ec-b909-0242ac120002',1,'anh1cuaroom.png',1),('6a2b909c-b184-11ec-b909-0242ac120002','08cf7798-b182-11ec-b909-0242ac120002',2,'anhdanhgia.png',1),('6f8d107e-b184-11ec-b909-0242ac120002','08cf7798-b182-11ec-b909-0242ac120002',1,'videocuarroom.mp4',2);
+INSERT INTO `document` VALUES ('00ea8204-5fe6-426f-884a-2ca6becc2aed','284f438f-7654-4ba0-8434-642a263dc180',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fc5fd7e79-3095-4fe4-97cb-03ce69c42ed2_1603204000.jpg?alt=media&token=f62fd381-e36e-45b0-bab6-2a3a5f6186dc',2),('00ed975f-c380-4f72-8923-555292ad3e76','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz1561032702849-574f16e96b333953bd00eaa7923c276d_1651635134.jpg?alt=media&token=a589adff-2ac7-4a0f-a841-002535a9abd4',2),('0275907f-b799-4b2a-afbb-1e393a804ae9','bc975885-8801-4ba3-a04d-932e0c6f2d12',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F20210114-091255_1633144847.jpg?alt=media&token=86b395b4-2e0f-4093-bee3-66f0353dd1ce',2),('02e9cfe9-5c9f-4ccc-a4c7-5ea4c03a766e','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-1_1636609434.jpg?alt=media&token=7accfb2f-a687-48f8-a8bf-4556e70b2fb5',2),('0c1c6d50-7f4a-4ce5-a2eb-c133647117b9','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124036_1649607654.jpg?alt=media&token=8e2e7aae-71e2-4d8b-ba16-aa1131652b41',2),('12501fd8-6c20-41f3-90e8-4182bccc9537','2e532ce6-b36c-4b08-8296-42603e1a1303',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F5fe9b013b5ad206ab88a71b4dedf34ca.jpg?alt=media&token=76e98014-6553-48f3-bcfc-490678748809',2),('162ad07a-7d35-4069-b211-d6e094a4e807','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387379956853-2106a546b48817719de3f8ce1c1bb6e0_1651636858%20-%20Copy.jpg?alt=media&token=f4deef12-63bf-4ec7-b26d-b9e99d298819',2),('1aff04be-2901-4b44-8c55-97006683a355','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387424035050-43072e1dfee41e43836df6caefb1e9f0_1651636857.jpg?alt=media&token=2e159bd9-cbf5-4f1d-8115-717570bddc2d',2),('1d62d5cd-43d4-415a-ad48-e9e44c254dca','1bda6da4-f64d-455c-81c2-b56f47e526d2',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F548504f6-d101-4bbf-adb3-e2dffc42a562_1635494035.jpg?alt=media&token=5fe2a8eb-b997-46bf-a044-02ba80956248',2),('1d9f5735-bbca-40f1-9b81-bbd0e9b8b5b4','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F2_1638952423.jpg?alt=media&token=e587c874-17d0-4b7f-9242-11c068c195bb',2),('1ef793c7-dae5-4dfd-93cf-3f2f7826b7ee','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz1561032706023-26df75e06012f1222cd4862f18b4f0ec_1651635135.jpg?alt=media&token=cc0e2269-f3bb-4a13-b766-9a852bac9bc2',2),('29ebab25-e3d0-4372-a94f-953119591e1c','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-7_1636609443.jpg?alt=media&token=44f646a8-367f-4038-a778-9f9454fa7276',2),('2fdd1c14-ba94-4dea-82d6-161428220a41','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fc5fd7e79-3095-4fe4-97cb-03ce69c42ed2_1603204000.jpg?alt=media&token=50cac763-a026-411c-9ed2-7287930c7dbd',2),('3080b4ad-9339-4731-82d6-6a90ab73fc9c','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F4_1638952423.jpg?alt=media&token=488ed725-5cd0-479a-bd2d-878ea37cc8ac',2),('316580eb-7408-4d45-8188-5113c86703a5','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387380846010-e5da875a23aca4470e53eea3469f01b4_1651636859.jpg?alt=media&token=12cfab92-926a-4f54-b2e5-c608d04d4b70',2),('31e178e1-def4-4787-a8b3-930bd0795a91','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fd7d975b2-8981-409b-b491-65aaa7fb68e0_1589689587.jpg?alt=media&token=0a25a141-5c86-48c7-b930-2104746ee5d7',2),('336289a7-8b3c-48cc-8063-a3cc89d8ed96','ffacedb5-8d3c-47c7-aa54-75e8098f9cf9',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3_1622005165.jpg?alt=media&token=3fb186e4-304d-471c-9854-0cc0522242ed',2),('345246fd-15c1-4da9-a695-ce075916268d','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-2_1636609436.jpg?alt=media&token=dd084bfa-6194-4e98-b4be-015b0a8d6108',2),('350edbde-975d-4001-8ff4-db51a88d8179','7e8606b9-a60b-4085-bd9b-c30f36d5b5f3',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3bc989ce-c362-46f7-9453-c48eb17f452a_1603204001.jpg?alt=media&token=daca5702-6d54-4bff-bfb3-28064dc26400',2),('399d3e9f-34ed-4fb6-b48f-300faad7ee30','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F0f46fc23db8d20d3799c_1586616541.jpg?alt=media&token=c69010cf-e5e2-4706-8d45-00225a988dae',2),('3a8e74f4-bf4f-4269-b4e7-d4dc33103c58','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387381070762-40f19e9fae73ba56b3883192c61fd14c_1651636858.jpg?alt=media&token=2f997822-9424-42b0-9801-f17643debb00',2),('3ec89025-ca97-4dd5-ae5e-abf616ab76bd','7699286b-91d2-40ef-aa09-c18621736b6e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6b648622-7883-466c-bdf1-092a73f0b593_1603204000.jpg?alt=media&token=d45ef748-f763-4763-99e5-99166c92f69d',2),('4ae172e8-37e7-4a68-9cd1-05967f9d20de','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131843_1646149544.jpg?alt=media&token=55e5a01c-5c29-4d4c-8232-77c4d64c6bd0',2),('4c73e623-d41b-4cd5-b2c9-9f3234245b25','ffacedb5-8d3c-47c7-aa54-75e8098f9cf9',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F4_1622005165.jpg?alt=media&token=4714d864-5363-43dc-877f-87a03f1f34ef',2),('4d503bde-f95e-4548-931c-3f865d5a009b','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3373334636503-bf8016b5a4fc9660821ed873ba62d66c_1651635760.jpg?alt=media&token=beccc67c-bf5e-43af-a674-8216e25cf8df',2),('4d5b6828-07aa-404a-b956-2c2f542877bd','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6b648622-7883-466c-bdf1-092a73f0b593_1603204000.jpg?alt=media&token=e1b854c1-2adc-412d-b9ab-43bc13172826',2),('4fb5e6c0-55e0-4931-a689-6f7386b68712','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F4_1643046715.jpg?alt=media&token=90f364cc-1a85-4a83-be07-198e399148b4',2),('52912e84-8cf3-48dc-8acf-8c16367abe0a','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-6_1636609441.jpg?alt=media&token=f3b93165-81e0-4b48-860f-0f72e3cf1552',2),('540f3535-1ce2-4958-a6fd-6a3af0694ac5','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz1561032697365-82c61368c91558eb49698058be70b79f_1651635134.jpg?alt=media&token=99f97f57-7fb9-4a47-a05e-bee5fc8895e6',2),('54368a2c-2d47-4e10-b8d0-278729eadc13','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-5_1636609440.jpg?alt=media&token=57961a58-5007-49ab-b35d-8a55860baa31',2),('5577b39e-bd8c-4f5e-a0db-4c1e93e6071f','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3373335421746-93d313bc09390f8decd75003bf107b50_1651635763.jpg?alt=media&token=16cf4e9f-f485-47f9-a44c-41bc727bb8c4',2),('57b35c18-2789-48d8-97ea-d452c4af042d','b7586094-214b-409d-bb93-45fe30e5556e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F52720cded4701a2e4361.jpg?alt=media&token=c6f3e793-30f5-4d5c-9fcb-e4843050ba04',2),('59081538-953a-4d0f-9e04-adffdf0d5f3a','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124054_1649607652.jpg?alt=media&token=85cfcfdb-b5be-423c-9d88-bdb6f196e658',2),('59d312d4-9a0b-4474-bad9-4e367325e3fd','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124043_1649607653.jpg?alt=media&token=2efee81e-9fcd-479c-9246-082ad9f57edf',2),('5a2fa763-d13e-4f55-9076-640b3dd4b945','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F1_1638952423.jpg?alt=media&token=38afad5d-b2b6-4eb7-91f9-cd106b4d533b',2),('5d9cbfe9-9485-4842-a034-e681ce1f1087','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F1_1643046717.jpg?alt=media&token=d09d4d9c-6906-407e-9342-9793fd3341ed',2),('5dd2f8f8-cfc7-4c69-af27-6456e4fae073','bc975885-8801-4ba3-a04d-932e0c6f2d12',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F20201218-104658_1633144853.jpg?alt=media&token=59f009c5-e744-43cf-a647-2e63d4838124',2),('5e319ccb-0c6a-4743-9c69-a16c5cc44a59','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fphong-3_1636609447.jpg?alt=media&token=86763dcf-f483-47a3-a858-402ed10e8aa2',2),('60119bc4-dca5-46a6-bfc1-87345e274495','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fd1562938-98b6-4126-96bb-aa6938cce017-1555413056_1572575976.jpg?alt=media&token=9b7cbe36-444b-4d1d-bee7-44f01d2ae900',2),('64b26e36-4311-4416-9b07-7f8e9d7dfd50','7699286b-91d2-40ef-aa09-c18621736b6e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fc5fd7e79-3095-4fe4-97cb-03ce69c42ed2_1603204000.jpg?alt=media&token=6b6ec396-6a68-4278-b61f-3c3c6e64523e',2),('65efaada-aa04-49e7-8223-27e3358694ec','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131809_1646149539.jpg?alt=media&token=1a1d0b2f-708c-481d-b35e-9f9324491a68',2),('65f7906c-407a-4c2a-8ab7-d404e9ad219d','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3373334878449-28b86abac7797491f6f657be22513dbe_1651635763.jpg?alt=media&token=3ba3071b-ca41-4e05-a80a-0fa587c46254',2),('676f2826-9500-4f06-bbf2-7b9fec4d31d9','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F255997431-2728279134134980-1654521398852227723-n_1637505918.jpg?alt=media&token=61a07673-4161-4fd9-a37b-e0239596a735',2),('677fc852-3f4c-452c-ae58-d7c86f538cb5','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fphong-2_1636609445.jpg?alt=media&token=7099031c-98c6-43be-badc-5419cc490ab6',2),('682bcdc7-db3f-40ac-a440-8268d54573b8','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F895314de-282d-46d0-b2de-d28e658884bc-1555413067_1572575975.jpg?alt=media&token=cd426485-13b5-4aac-8588-650e736a8aa1',2),('6ca8d1f6-e56e-4785-9010-dbb9e3b044bd','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fwatch.mp4?alt=media&token=e6624ab4-21ad-4b8f-90a3-be8296c915b3',2),('7217232d-5b37-498c-ac36-0785ef02d39d','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F255997431-2728279134134980-1654521398852227723-n_1637505918.jpg?alt=media&token=5e73ff70-d51d-43a4-983a-d29b50424b7c',2),('7521a2ab-6556-4748-a8d9-491d9c02de69','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-3_1636609437.jpg?alt=media&token=690ad45d-ca96-43f6-b4f2-bf114b76ad86',2),('75cc4ebe-7df5-4508-a0fa-c1ee2586569f','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz1561032691708-df8232b9c6e29ea9ec54694c305ea322_1651635133.jpg?alt=media&token=b0b28991-49ab-49cc-a7ba-5696ca6e5719',2),('766cfa52-00cd-429f-be43-b4658ee2e50e','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124040_1649607654.jpg?alt=media&token=7c010155-0ba7-4d47-8e9c-14608aa97a44',2),('78659733-1ac7-4633-b429-3523f6e03f4d','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3373335533696-7e271960d45666fc61ee4eb2dadec9ad_1651635765.jpg?alt=media&token=5d1b655c-5c24-4d0c-aff3-84b205fd8e3a',2),('7bfe119d-270e-478e-8b23-003b9b898aac','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fbf2d13c1-2282-4b90-b0ef-76971a3e1fc5_1603204000.jpg?alt=media&token=8ea5766c-9ea3-4478-8267-e3ab1c9481d7',2),('7f68d792-88f1-434b-9ff7-ecdf641fd601','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131833_1646149542.jpg?alt=media&token=3c076df1-eb4e-4abd-9d72-57ec5e59f937',2),('864ba99f-c037-4b0d-bc9d-a195ba06ae57','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fc5fd7e79-3095-4fe4-97cb-03ce69c42ed2_1603204000.jpg?alt=media&token=97bfa3d2-6e9d-4f2f-b5c2-24b191b0fa03',2),('8c2f055f-1f8b-420d-aa8b-1d6eae681f40','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3373334636505-ef1a880f9061ea8c7cc4f4ca389839d8-1_1651635761.jpg?alt=media&token=8b295d2f-fda5-4089-8a28-200122323ca6',2),('8e17e4b7-1f64-4590-aba4-e9ae1eaabe93','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124051_1649607652.jpg?alt=media&token=ed434a09-94ce-4b23-aa0a-cfa6ac12c442',2),('8e2780d7-70c4-4fec-ac7c-2a61bdf2bce8','fac8fcd1-0f56-4b26-a15a-1e7e54ffc495',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fxcrsmu7_1651635759.jpg?alt=media&token=01ab69da-992f-4108-982d-fe9efa035049',2),('932a0716-659a-41dd-935c-698008bbeda2','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3_1638952423.jpg?alt=media&token=128badd2-376c-4c44-a83c-1e608adc25b3',2),('990e4e88-9f21-4d51-aea8-c5be8b3e4480','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3_1643046715.jpg?alt=media&token=2ae854bf-4f98-4961-b06f-3d183501c554',2),('99dc668f-2152-4559-b27e-8e9329498db8','9a7a40ab-1992-4007-873f-4d8d8302cc81',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-2372_1651377065.png?alt=media&token=fdf8fac0-ad75-45de-81e5-8dd21191e09d',2),('9d3a2db0-4ec2-48fd-abfe-cd0515d27481','7e8606b9-a60b-4085-bd9b-c30f36d5b5f3',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fbf2d13c1-2282-4b90-b0ef-76971a3e1fc5_1603204000.jpg?alt=media&token=5bc05776-d435-4828-bcb4-6e7fa03e35b0',2),('a33f8446-7002-4059-af06-a5e7f64cf24d','9a7a40ab-1992-4007-873f-4d8d8302cc81',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg20220215140931-00_1651377104.jpg?alt=media&token=4c56d33b-1bd3-4902-8c5c-5958c05fe26b',2),('a36f075e-1755-474b-b20c-dff1be491713','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fxam1_1640614964.jpg?alt=media&token=1d56d519-24c8-4199-9df1-1dca408d3d88',2),('ae3100bc-1136-4c0d-accd-f951b9fd038e','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6b648622-7883-466c-bdf1-092a73f0b593_1603204000.jpg?alt=media&token=96d37d1c-5906-4214-a3fd-aabc28ab566d',2),('ae70aba0-047d-48bd-9580-f5146fba26bf','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F273323c2-4926-4bb9-9882-029a8537ea44_1589689591.jpg?alt=media&token=4cf3cf4a-42d0-43ec-9536-1635fffcb9e6',2),('afafbd6a-b47a-4a9b-91c0-d70edc0ac29b','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F0196dc64-6e07-4ab4-bb20-28048a0d5178-1556180749_1572575975.jpg?alt=media&token=4152aeb4-e8eb-4608-a61c-223919aefa1c',2),('b02b1dbb-0655-44fc-853d-da2f28572277','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F134d21c5-cc25-46eb-8df5-f956a4467f55_1589689583.jpg?alt=media&token=d066f6fd-dbcc-4271-991e-f51486c0d9f1',2),('b17fa642-c219-43ae-a1d8-e45938658111','bc975885-8801-4ba3-a04d-932e0c6f2d12',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F20201218-104752_1633144853.jpg?alt=media&token=844f6b74-2d1f-4e71-89da-1d5ff8e45306',2),('b1f8cc99-8d63-4362-aa1b-7191d326407b','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F7_1638952424.jpg?alt=media&token=275c066d-100b-473b-8337-d2e4942b996d',2),('b2a590b6-457d-4536-bfcf-5fb9e6052202','284f438f-7654-4ba0-8434-642a263dc180',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6b648622-7883-466c-bdf1-092a73f0b593_1603204000.jpg?alt=media&token=22ff08c2-1950-440e-86b7-5ed8a30ca118',2),('ba6461a6-81bd-41fc-b6d3-f1086b7aaefe','7699286b-91d2-40ef-aa09-c18621736b6e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3bc989ce-c362-46f7-9453-c48eb17f452a_1603204001.jpg?alt=media&token=14e21a46-ecfe-4666-b59c-0e92b5f4ffe4',2),('bc9cfd83-e793-42d7-8a0b-b8610ab7faf2','ffacedb5-8d3c-47c7-aa54-75e8098f9cf9',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F1_1622005165.jpg?alt=media&token=90e11c85-55cb-4a65-8331-a79fc49ae585',2),('bcf3b34c-22f9-43e3-bcc8-0c87bd4068ce','7e8606b9-a60b-4085-bd9b-c30f36d5b5f3',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fc5fd7e79-3095-4fe4-97cb-03ce69c42ed2_1603204000.jpg?alt=media&token=c923f20b-0e2c-4354-86a9-42296302cafc',2),('bdf73f91-1b60-48b0-899d-667a19a5dd7f','952789b3-31f7-449e-943f-6b1104543a92',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fnha-4_1636609438.jpg?alt=media&token=5ced4d89-a757-4b88-b02e-b33b8bcc8289',2),('c10f10e3-7fbd-4805-8145-ac5e5a26ebd2','9a7a40ab-1992-4007-873f-4d8d8302cc81',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg20220215140956-00_1651377132.jpg?alt=media&token=e4ebee4c-29ee-445a-b885-ded28c276e21',2),('c23dbce5-e7a2-442c-895e-8ab5078f90db','ffacedb5-8d3c-47c7-aa54-75e8098f9cf9',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F2_1622005165.jpg?alt=media&token=e770498e-ff9c-4571-8ddf-7d37d3eb9179',2),('c31f692b-4135-4e06-ae53-31e561497953','bc975885-8801-4ba3-a04d-932e0c6f2d12',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F20201218-104821_1633144847.jpg?alt=media&token=affb61f1-56e1-402d-9546-2e3603b491f7',2),('c5034630-7b4c-4215-a51f-82e302511ce3','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387379956853-2106a546b48817719de3f8ce1c1bb6e0_1651636858.jpg?alt=media&token=47466a55-9132-408b-b1d4-2e9e968fe977',2),('c51a289b-ac68-4e87-adb3-e78f3810b6ee','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F8_1638952424.jpg?alt=media&token=845c4889-803f-4623-8483-d3c4548ed92f',2),('c6a87a76-ac15-4fe0-a812-00f3804f9f4e','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F01cb375610f8eba6b2e9_1586616542.jpg?alt=media&token=055cb060-edf7-42ac-a9d1-6d2174571b69',2),('c8ac9766-e22f-4f85-8fa6-9113fa2eea17','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F0196dc64-6e07-4ab4-bb20-28048a0d5178-1556180749_1572575975%20-%20Copy.jpg?alt=media&token=c552897c-5aaa-48ee-bdc9-cbd6392ac395',2),('c9bf631a-2d81-483f-93b0-5184ed164a32','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F1anh1_1646149536.jpg?alt=media&token=2386cfb0-b69a-4969-bd42-515ed9b5ffec',2),('ca3fc872-3dd5-44ac-9d83-db853bdacc29','284f438f-7654-4ba0-8434-642a263dc180',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3bc989ce-c362-46f7-9453-c48eb17f452a_1603204001.jpg?alt=media&token=844e0e86-97e0-4309-b357-d6f65af3ad00',2),('cb5f3fe0-e655-4348-b31b-c2020165477f','7699286b-91d2-40ef-aa09-c18621736b6e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fbf2d13c1-2282-4b90-b0ef-76971a3e1fc5_1603204000.jpg?alt=media&token=f5a615bf-d3f7-470b-ad74-e85efe9ee026',2),('cbf52664-3b26-4bfd-8b34-f95046f28d21','b7586094-214b-409d-bb93-45fe30e5556e',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6a1cf7ae2f00e15eb811.jpg?alt=media&token=eba9f991-7dd2-4e38-a40e-2e0d2ca90a3f',2),('cc1d2205-918a-43b4-8b88-cb141bf8114b','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131820_1646149541.jpg?alt=media&token=9e8fb04c-619b-4862-a610-879d9054e887',2),('d1d44c37-4b3d-44ce-a350-8b3290d303a8','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3bc989ce-c362-46f7-9453-c48eb17f452a_1603204001.jpg?alt=media&token=2ea1f95a-fafe-4b89-aa6c-99eb79508a21',2),('d93d8c8e-b651-408f-a7d9-e5a50a6dc94e','6438532d-ed89-4b63-88a8-7e4afc86d2ec',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz3387379978038-2b40f6f03681e3d3d8242fc98cb08903_1651636861.jpg?alt=media&token=196bdc12-ac8f-4009-be12-91bff26d9581',2),('dc0b629f-1835-4eb7-b29f-c715fccf2c69','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F64239353-10219125112141760-9202983440553607168-n_1572575975.jpg?alt=media&token=f35d9ca2-6794-4ad6-920c-bcf6a0dc9c22',2),('dc6be821-85a5-45ee-ba52-003d682246a0','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F8d4a549a-da1f-4795-9e57-8d08837fa784_1646011928.jpg?alt=media&token=307bcbb7-f59d-40b5-8748-d06fbc73be32',2),('ddc2bd1a-17dc-4700-9b7d-82db7dab8233','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F2a0ad212f0bc0be252ad_1586616542.jpg?alt=media&token=d7aaf6d8-6d8c-4571-bb76-6c206d9db9b4',2),('df185b3a-1cd1-4566-baac-e8bf30d4e13b','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F8d4a549a-da1f-4795-9e57-8d08837fa784_1646011928.jpg?alt=media&token=5265eddf-a653-41a7-8db1-98780194d854',2),('e0a9d03c-785c-40c4-a3cf-7687734889f4','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F2a4b331611b8eae6b3a9_1586616543.jpg?alt=media&token=edb6c246-e39b-490f-901c-17138fa57175',2),('e3a129ef-8d11-4d4c-baae-93aa854d54fb','129ab55a-2a50-48ae-9134-9b4c54eeb1a8',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fz1561032688925-c453eddce753168c9473262c185cd3dc-1_1651635134.jpg?alt=media&token=382ac66d-609a-4577-bd7a-aff8e119244a',2),('e5552c93-a6f4-43df-887f-b9c91c34b1a7','ffacedb5-8d3c-47c7-aa54-75e8098f9cf9',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F5_1622005166.jpg?alt=media&token=99e92996-2d25-465c-8f59-cd4645325877',2),('e63ab6ca-329c-4cc3-8739-e7e6f58a343d','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131838_1646149543.jpg?alt=media&token=c24495e3-740d-4904-a0ff-f78a62658574',2),('e7345c7a-b530-4beb-a7cf-defc2f5b58ee','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F4fe243d67e788526dc69_1586616543.jpg?alt=media&token=d3d0bf5d-0ed3-4f58-82ca-93f45687789e',2),('e829fb2f-dc6f-4b02-99ea-7080b6092b58','7e8606b9-a60b-4085-bd9b-c30f36d5b5f3',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F6b648622-7883-466c-bdf1-092a73f0b593_1603204000.jpg?alt=media&token=72ceda12-01f8-4b2f-9a4b-9e98419e82d7',2),('e82a9d0e-e576-4103-b1c5-804dd31a4b24','445d5faa-be24-4468-898e-829b7f6ba560',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F3bc989ce-c362-46f7-9453-c48eb17f452a_1603204001.jpg?alt=media&token=acb74553-3237-43a0-8599-a5c142ececfc',2),('e9242265-2f78-4bac-99e2-3247dcf6503c','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220410-232122_1649607700.jpg?alt=media&token=05fb20aa-632b-4dfa-86a8-8ffc8b6c93d8',2),('e9ad73f1-7f4a-4c54-aa0e-6f19e9561d93','d883ae14-2bf8-40be-9835-16f94de85696',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F5_1638952424.jpg?alt=media&token=3ea0a29c-5e64-4196-bffa-bd9c372db6ed',2),('eb6b5cce-1f2e-45d9-9e96-a0785196c8d2','9e1a7b2f-1142-4cf6-ab2d-36788a8a9973',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F0c3f603c4792bccce583_1586616541.jpg?alt=media&token=de090310-ec18-4095-8c5b-401abdf32b79',2),('ecea45b8-f9b2-43a2-807f-d6d8b0ca976a','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F8503c2b7-3914-45f8-a312-032961bd26d7_1589689583.jpg?alt=media&token=0a2b0ad4-a725-4cc6-82c6-883628be7511',2),('f39cf9b6-3a17-4422-906d-63dfac871db6','f1f15d9d-d380-4787-bdf3-6bff8c6d247c',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220402-124047_1649607653.jpg?alt=media&token=3e1630b6-3bcb-408e-b8b2-4b9a006af6e9',2),('f59bd0fe-cff7-4db7-98b9-07bb717e41f8','4ed8385c-c6ae-4144-bf72-59ac79d8521f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fbf2d13c1-2282-4b90-b0ef-76971a3e1fc5_1603204000.jpg?alt=media&token=2679631a-df87-4df8-8f60-0643f3fce9e5',2),('f88317c1-6c00-42c3-a2bf-18d6d85c27b7','1d9163ac-d756-44ee-a812-d85b57697a24',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fimg-20220301-131853_1646149545.jpg?alt=media&token=ed743e63-e77f-4f11-8b9f-740a21f2c46c',2),('f99298d8-d36a-447d-82c7-298df4950c61','0b83cba6-e396-4d51-9156-0a5c7af6fe7f',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Ff50d9e0e-0f67-454e-9cc6-1b6f18ed6dc1_1589689588.jpg?alt=media&token=99bd8a74-fef1-412f-ab75-6c8ecfe2a14f',2),('fa57dfee-1089-4dff-87e4-9f1f269cd134','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Faebc2898-bad1-47f0-a84f-c7937f800851-1555413052_1572575976.jpg?alt=media&token=5c6f8c1c-266e-46f4-aabb-51bc9b81f6e9',2),('fde21c75-8f26-42cf-a20d-1ac91514a034','84ecd62f-5b65-4442-82f3-80c210a1e9ad',1,'https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F1e44201c-bacd-4f47-8715-c8a5d810fa33-1555413073_1572575975.jpg?alt=media&token=8ca47acf-408f-47a4-b8de-6bc213dd51ae',2);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,17 +80,17 @@ DROP TABLE IF EXISTS `evaluation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `evaluation` (
-                              `evaluation_id` varchar(40) NOT NULL,
-                              `room_id` varchar(40) DEFAULT NULL,
-                              `user_id` varchar(40) DEFAULT NULL,
-                              `rate` float DEFAULT NULL,
-                              `comment_rate` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-                              `time_rate` datetime DEFAULT NULL,
-                              PRIMARY KEY (`evaluation_id`),
-                              KEY `fk7` (`user_id`),
-                              KEY `fk8` (`room_id`),
-                              CONSTRAINT `fk7` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
-                              CONSTRAINT `fk8` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
+  `evaluation_id` varchar(40) NOT NULL,
+  `room_id` varchar(40) DEFAULT NULL,
+  `user_id` varchar(40) DEFAULT NULL,
+  `rate` float DEFAULT NULL,
+  `comment_rate` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `time_rate` datetime DEFAULT NULL,
+  PRIMARY KEY (`evaluation_id`),
+  KEY `fk7` (`user_id`),
+  KEY `fk8` (`room_id`),
+  CONSTRAINT `fk7` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
+  CONSTRAINT `fk8` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -98,7 +100,7 @@ CREATE TABLE `evaluation` (
 
 LOCK TABLES `evaluation` WRITE;
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
-INSERT INTO `evaluation` VALUES ('5ee8e48e-b182-11ec-b909-0242ac120002','6b20a12a-b181-11ec-b909-0242ac120002','c1ff7878-b180-11ec-b909-0242ac120002',5,'Cho o hien dai gia re lam moi nguoi','2022-05-20 15:30:30'),('d839fd82-b182-11ec-b909-0242ac120002','0c8f4610-b182-11ec-b909-0242ac120002','d5a59cf4-b180-11ec-b909-0242ac120002',4,'Chu nha tro dep trai lai de chiu','2022-05-20 15:30:30'),('dc7917f2-b182-11ec-b909-0242ac120002','0c8f4610-b182-11ec-b909-0242ac120002','de4ac9a6-b180-11ec-b909-0242ac120002',4,'Chu nha tro than thien','2022-05-20 15:30:30');
+INSERT INTO `evaluation` VALUES ('14116d76-5ec7-46c3-a91a-0757c1b1b119','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00'),('77dae3ac-9dbd-467c-aaf5-f65bd522deec','129ab55a-2a50-48ae-9134-9b4c54eeb1a8','932d1d12-0d15-4250-8320-0ae18854527e',5,'phòng trọ sạch sẽ thoáng mát.','2022-05-16 00:00:00'),('77df0506-65dd-45cf-97d9-d6e74c0e52cf','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00'),('a4c0007d-6a4c-4b02-b610-74998653b6b7','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','442d1f93-098b-4c50-b003-72445bc17d51',5,'còn phòng cho thuê không ạ','2022-05-05 00:00:00'),('c09450f7-c4a5-421f-9abe-87e2dfbc36db','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'ok','2022-05-06 00:00:00'),('c800a2b1-c679-43fe-9c13-b5a632e40948','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00'),('cc386e24-5b95-45d3-9b5f-b1db07fc72f0','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'ok','2022-05-06 00:00:00'),('dfcfd305-c591-4281-a30e-2e57f443fb5d','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00'),('f037452c-af91-4b49-b41c-b8e613b21307','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00'),('f2dd1b4c-eb2f-4716-8624-3667fc7af55f','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','b1c4bac4-fc9c-45b5-a158-0a1d4adce054',5,'phòng trọ rất sạch sẽ an ninh','2022-05-06 00:00:00'),('fcce6af6-1b49-485f-b81e-3f33504f82bf','0b83cba6-e396-4d51-9156-0a5c7af6fe7f','9176273c-fd14-4dbf-9aa8-26449b8a166e',5,'','2022-05-06 00:00:00');
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,18 +112,18 @@ DROP TABLE IF EXISTS `flyway_schema_history`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `flyway_schema_history` (
-                                         `installed_rank` int NOT NULL,
-                                         `version` varchar(50) DEFAULT NULL,
-                                         `description` varchar(200) NOT NULL,
-                                         `type` varchar(20) NOT NULL,
-                                         `script` varchar(1000) NOT NULL,
-                                         `checksum` int DEFAULT NULL,
-                                         `installed_by` varchar(100) NOT NULL,
-                                         `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                                         `execution_time` int NOT NULL,
-                                         `success` tinyint(1) NOT NULL,
-                                         PRIMARY KEY (`installed_rank`),
-                                         KEY `flyway_schema_history_s_idx` (`success`)
+  `installed_rank` int NOT NULL,
+  `version` varchar(50) DEFAULT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
+  `checksum` int DEFAULT NULL,
+  `installed_by` varchar(100) NOT NULL,
+  `installed_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `execution_time` int NOT NULL,
+  `success` tinyint(1) NOT NULL,
+  PRIMARY KEY (`installed_rank`),
+  KEY `flyway_schema_history_s_idx` (`success`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,7 +133,7 @@ CREATE TABLE `flyway_schema_history` (
 
 LOCK TABLES `flyway_schema_history` WRITE;
 /*!40000 ALTER TABLE `flyway_schema_history` DISABLE KEYS */;
-INSERT INTO `flyway_schema_history` VALUES (1,'1','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2022-04-14 03:27:07',0,1),(2,'1','my roommate db','SQL','V1__my_roommate_db.sql',2106997774,'root','2022-04-14 03:30:16',13697,1);
+INSERT INTO `flyway_schema_history` VALUES (1,'1','<< Flyway Baseline >>','BASELINE','<< Flyway Baseline >>',NULL,'root','2022-04-14 03:27:07',0,1),(2,'1','my roommate db','SQL','V1__my_roommate_db.sql',2106997774,'root','2022-04-14 03:30:16',13697,1),(3,'2','insertWatinglist','SQL','V2__insertWatinglist.sql',770885981,'root','2022-05-04 09:47:37',39,1);
 /*!40000 ALTER TABLE `flyway_schema_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,10 +145,10 @@ DROP TABLE IF EXISTS `province`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `province` (
-                            `province_id` int NOT NULL,
-                            `name_province` varchar(50) DEFAULT NULL,
-                            `code_province` varchar(20) DEFAULT NULL,
-                            PRIMARY KEY (`province_id`)
+  `province_id` int NOT NULL,
+  `name_province` varchar(50) DEFAULT NULL,
+  `code_province` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`province_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,11 +170,11 @@ DROP TABLE IF EXISTS `room_sharing`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `room_sharing` (
-                                `sharing_id` varchar(40) NOT NULL,
-                                `room_id` varchar(40) DEFAULT NULL,
-                                PRIMARY KEY (`sharing_id`),
-                                KEY `fk10` (`room_id`),
-                                CONSTRAINT `fk10` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
+  `sharing_id` varchar(40) NOT NULL,
+  `room_id` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`sharing_id`),
+  KEY `fk10` (`room_id`),
+  CONSTRAINT `fk10` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -182,7 +184,6 @@ CREATE TABLE `room_sharing` (
 
 LOCK TABLES `room_sharing` WRITE;
 /*!40000 ALTER TABLE `room_sharing` DISABLE KEYS */;
-INSERT INTO `room_sharing` VALUES ('4b566404-b183-11ec-b909-0242ac120002','6b20a12a-b181-11ec-b909-0242ac120002');
 /*!40000 ALTER TABLE `room_sharing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,15 +195,15 @@ DROP TABLE IF EXISTS `sharing_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sharing_detail` (
-                                  `sharing_detail_id` varchar(40) NOT NULL,
-                                  `sharing_id` varchar(40) DEFAULT NULL,
-                                  `user_id` varchar(40) DEFAULT NULL,
-                                  `roles` enum('Key','Member') DEFAULT NULL,
-                                  PRIMARY KEY (`sharing_detail_id`),
-                                  KEY `fk11` (`sharing_id`),
-                                  KEY `fk12` (`user_id`),
-                                  CONSTRAINT `fk11` FOREIGN KEY (`sharing_id`) REFERENCES `room_sharing` (`sharing_id`),
-                                  CONSTRAINT `fk12` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`)
+  `sharing_detail_id` varchar(40) NOT NULL,
+  `sharing_id` varchar(40) DEFAULT NULL,
+  `user_id` varchar(40) DEFAULT NULL,
+  `roles` enum('Key','Member') DEFAULT NULL,
+  PRIMARY KEY (`sharing_detail_id`),
+  KEY `fk11` (`sharing_id`),
+  KEY `fk12` (`user_id`),
+  CONSTRAINT `fk11` FOREIGN KEY (`sharing_id`) REFERENCES `room_sharing` (`sharing_id`),
+  CONSTRAINT `fk12` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -212,7 +213,6 @@ CREATE TABLE `sharing_detail` (
 
 LOCK TABLES `sharing_detail` WRITE;
 /*!40000 ALTER TABLE `sharing_detail` DISABLE KEYS */;
-INSERT INTO `sharing_detail` VALUES ('66ff740c-b183-11ec-b909-0242ac120002','4b566404-b183-11ec-b909-0242ac120002','c1ff7878-b180-11ec-b909-0242ac120002','Member');
 /*!40000 ALTER TABLE `sharing_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,25 +224,25 @@ DROP TABLE IF EXISTS `table_room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `table_room` (
-                              `room_id` varchar(40) NOT NULL,
-                              `user_id` varchar(40) DEFAULT NULL,
-                              `province_id` int DEFAULT NULL,
-                              `district_id` int DEFAULT NULL,
-                              `ward_id` int DEFAULT NULL,
-                              `street` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-                              `price` float NOT NULL,
-                              `capacity` float NOT NULL,
-                              `description_room` varchar(20000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-                              `status_room` tinyint(1) DEFAULT NULL,
-                              PRIMARY KEY (`room_id`),
-                              KEY `fk3` (`user_id`),
-                              KEY `fk4` (`province_id`),
-                              KEY `fk5` (`district_id`),
-                              KEY `fk6` (`ward_id`),
-                              CONSTRAINT `fk3` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
-                              CONSTRAINT `fk4` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
-                              CONSTRAINT `fk5` FOREIGN KEY (`district_id`) REFERENCES `district` (`district_id`),
-                              CONSTRAINT `fk6` FOREIGN KEY (`ward_id`) REFERENCES `ward` (`ward_id`)
+  `room_id` varchar(40) NOT NULL,
+  `user_id` varchar(40) DEFAULT NULL,
+  `province_id` int DEFAULT NULL,
+  `district_id` int DEFAULT NULL,
+  `ward_id` int DEFAULT NULL,
+  `street` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `price` float NOT NULL,
+  `capacity` float NOT NULL,
+  `description_room` varchar(20000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status_room` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`room_id`),
+  KEY `fk3` (`user_id`),
+  KEY `fk4` (`province_id`),
+  KEY `fk5` (`district_id`),
+  KEY `fk6` (`ward_id`),
+  CONSTRAINT `fk3` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
+  CONSTRAINT `fk4` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
+  CONSTRAINT `fk5` FOREIGN KEY (`district_id`) REFERENCES `district` (`district_id`),
+  CONSTRAINT `fk6` FOREIGN KEY (`ward_id`) REFERENCES `ward` (`ward_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -252,7 +252,7 @@ CREATE TABLE `table_room` (
 
 LOCK TABLES `table_room` WRITE;
 /*!40000 ALTER TABLE `table_room` DISABLE KEYS */;
-INSERT INTO `table_room` VALUES ('08cf7798-b182-11ec-b909-0242ac120002','09deb984-b180-11ec-b909-0242ac120002',25,343,339,'Duong Ngo May',700000,300,'Phong cho thue sinh vien gia re',1),('0c8f4610-b182-11ec-b909-0242ac120002','09deb984-b180-11ec-b909-0242ac120002',25,343,338,'Duong Nguyen Thi Dinh',800000,300,'Phong cho thue sinh vien gia re',1),('6b20a12a-b181-11ec-b909-0242ac120002','09deb984-b180-11ec-b909-0242ac120002',25,343,328,'Duong Dao Tan',500000,300,'Phong cho thue sinh vien gia re',1);
+INSERT INTO `table_room` VALUES ('0b83cba6-e396-4d51-9156-0a5c7af6fe7f','6316ebf0-a9e2-455f-8fa6-059a7d214137',4,66,1003,' 511 Đường ĐT 743',3000000,45,'Nhà trọ Dĩ An 3 triệu - 45m2. Khu riêng an ninh, sạch sẽ',1),('129ab55a-2a50-48ae-9134-9b4c54eeb1a8','6316ebf0-a9e2-455f-8fa6-059a7d214137',4,66,1003,'đường Ngô Thì Nhậm',2600000,15,'Cho thuê phòng trọ cao cấp gần siêu thị Go Dĩ An, Bình Dương',1),('1bda6da4-f64d-455c-81c2-b56f47e526d2','932d1d12-0d15-4250-8320-0ae18854527e',25,343,5295,'276/58/2 Đường Hoàng Văn Thụ',1600000,25,'Cho thuê phòng trọ tại Tp Quy Nhơn tỉnh Bình Định. Giá 1,6 triệu/tháng',1),('1d9163ac-d756-44ee-a812-d85b57697a24','6fa47ae2-2afe-411b-9f76-7b197e4e0df1',2,52,846,'Trường Chinh',3000000,27,'Cho thuê phòng trọ đủ đồ 27m2 khu Trường Chinh Thanh Xuân- Liên hệ: 0867703862',1),('1ebfc13b-8e52-491d-9d2d-022113bb7d1a','932d1d12-0d15-4250-8320-0ae18854527e',1,3,44,'đường Ngô Thì Nhậm',2600000,20,'Phòng trọ giá rẻ cho sinh viên ',1),('284f438f-7654-4ba0-8434-642a263dc180','932d1d12-0d15-4250-8320-0ae18854527e',1,3,44,'đường Ngô Thì Nhậm',2600000,20,'Phòng trọ giá rẻ cho sinh viên ',2),('2e532ce6-b36c-4b08-8296-42603e1a1303','9176273c-fd14-4dbf-9aa8-26449b8a166e',2,26,341,'55 Lê Duẫn',2000000,10,'ádffffffffff',2),('445d5faa-be24-4468-898e-829b7f6ba560','9176273c-fd14-4dbf-9aa8-26449b8a166e',1,3,29,'le duẫn',1200000,20,'phòng trọ sạch sẽ giá rẻ',0),('4ed8385c-c6ae-4144-bf72-59ac79d8521f','6316ebf0-a9e2-455f-8fa6-059a7d214137',1,1,1,'Đường Lữ Gia',1500000,20,'abcaaa',2),('6438532d-ed89-4b63-88a8-7e4afc86d2ec','2895d968-a0fe-41c3-b60f-f832de762243',1,22,296,'93 Lam Sơn',4500000,35,'Cho thuê căn hộ đầy đủ tiện nghi, full nội thất, cách sân bay 5 phút đi bộ',1),('7699286b-91d2-40ef-aa09-c18621736b6e','9176273c-fd14-4dbf-9aa8-26449b8a166e',1,3,30,'30 Đường Trần Khánh Dư',2600000,20,'Phòng trọ giá rẻ cho sinh viên',1),('7e8606b9-a60b-4085-bd9b-c30f36d5b5f3','932d1d12-0d15-4250-8320-0ae18854527e',25,343,5295,'306/29/23 Hoàng văn thụ',2600000,35,'Cho thuê trọ cao cấp, hiện đại, sạch sẽ, thoáng mát',1),('84ecd62f-5b65-4442-82f3-80c210a1e9ad','2895d968-a0fe-41c3-b60f-f832de762243',1,2,20,'3 Đường Thân Văn Nhiếp',3300000,23,'phòng trọ cao cấp quận 2',1),('952789b3-31f7-449e-943f-6b1104543a92','6fa47ae2-2afe-411b-9f76-7b197e4e0df1',6,87,1326,'Tổ 10 Vĩnh Châu Đường số 23/10',1200000,25,'Cho thuê nhà trọ phòng trọ giá rẻ Mùa Dịch khu vực Nha Trang. Chỉ 2tr2/tháng/ nhà // 1tr2/tháng/phòng',1),('9a7a40ab-1992-4007-873f-4d8d8302cc81','932d1d12-0d15-4250-8320-0ae18854527e',10,145,2123,'173 Đường Bạch Đằng',750000,15,'Phòng trọ giá rẻ',1),('9e1a7b2f-1142-4cf6-ab2d-36788a8a9973','2895d968-a0fe-41c3-b60f-f832de762243',14,185,2588,'30 Đường Trần Khánh Dư',3500000,49,'Cho thuê nhà Đà Lạt',1),('b7586094-214b-409d-bb93-45fe30e5556e','bc3fce0e-3cef-4fd4-8092-c89ddedb0e36',1,18,238,'55 Lê Duẫn',500000,20,'aa',2),('bc975885-8801-4ba3-a04d-932e0c6f2d12','6316ebf0-a9e2-455f-8fa6-059a7d214137',14,185,2592,'Đường Lữ Gia',2500000,25,'Cho thuê phòng trọ',1),('d883ae14-2bf8-40be-9835-16f94de85696','932d1d12-0d15-4250-8320-0ae18854527e',10,145,2115,'Đường Phạm Hồng Thái',1800000,24,'Phòng trọ 24m2 xây 2020 gần coopmart ngã tư Giếng Nước vũng tàu',1),('e21c5d60-8157-4dd6-8d22-6518dffd69f6','932d1d12-0d15-4250-8320-0ae18854527e',1,3,44,'đường Ngô Thì Nhậm',2600000,20,'Phòng trọ giá rẻ cho sinh viên ',1),('f1f15d9d-d380-4787-bdf3-6bff8c6d247c','6316ebf0-a9e2-455f-8fa6-059a7d214137',4,66,1003,'216/51/16 Đông Minh',2700000,25,'Nhà mới xây rộng rãi ngay trung tâm Dĩ An cần cho thuê',1),('fac8fcd1-0f56-4b26-a15a-1e7e54ffc495','6fa47ae2-2afe-411b-9f76-7b197e4e0df1',6,87,1315,'10 Phong Châu',1200000,16,'Cho thuê phòng trọ đẹp nằm ngay mặt tiền Đường Phong Châu',1),('ffacedb5-8d3c-47c7-aa54-75e8098f9cf9','6fa47ae2-2afe-411b-9f76-7b197e4e0df1',2,35,534,'24 Nguyễn Đình Chiểu',5500000,25,'Căn hộ dịch vụ mini 25m siêu đẹp, mặt đường Nguyễn Đình Chiểu, đầy đủ đồ vào ở ngay. giá rẻ 5.5 triệu',1);
 /*!40000 ALTER TABLE `table_room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,17 +264,17 @@ DROP TABLE IF EXISTS `table_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `table_user` (
-                              `user_id` varchar(40) NOT NULL,
-                              `username` varchar(45) NOT NULL,
-                              `passwords` varchar(255) NOT NULL,
-                              `roles` varchar(45) NOT NULL,
-                              `full_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-                              `birth_date` date DEFAULT NULL,
-                              `phone_number` char(11) NOT NULL,
-                              `gender` tinyint(1) DEFAULT NULL,
-                              `fb` varchar(255) DEFAULT NULL,
-                              `url_avatar` varchar(255) DEFAULT NULL,
-                              PRIMARY KEY (`user_id`)
+  `user_id` varchar(40) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `passwords` varchar(255) NOT NULL,
+  `roles` varchar(45) NOT NULL,
+  `full_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `birth_date` date DEFAULT NULL,
+  `phone_number` char(11) NOT NULL,
+  `gender` tinyint(1) DEFAULT NULL,
+  `fb` varchar(255) DEFAULT NULL,
+  `url_avatar` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -284,7 +284,7 @@ CREATE TABLE `table_user` (
 
 LOCK TABLES `table_user` WRITE;
 /*!40000 ALTER TABLE `table_user` DISABLE KEYS */;
-INSERT INTO `table_user` VALUES ('09deb984-b180-11ec-b909-0242ac120002','hoaprono1','hoaratlapro','Chu Tro','Nguyen Van Hoa','2000-10-09','0972388403',1,'https://www.facebook.com/hoa.210596','anh1.png'),('c1ff7878-b180-11ec-b909-0242ac120002','tayprono1','hoaratlapro','Nguoi thue','Nguyen Van Tay','2000-10-08','0972388402',1,'https://www.facebook.com/hoa.210596','anh2.png'),('d5a59cf4-b180-11ec-b909-0242ac120002','trucprono1','hoaratlapro','Nguoi thue','Nguyen Van Truc','2000-10-07','0972388430',0,'https://www.facebook.com/hoa.210596','anh3.png'),('d941a178-b180-11ec-b909-0242ac120002','tuongrono1','hoaratlapro','Nguoi thue','Nguyen Van Tuong','2000-10-06','0972388405',1,'https://www.facebook.com/hoa.210596','anh4.png'),('de4ac9a6-b180-11ec-b909-0242ac120002','tramprono1','hoaratlapro','Nguoi thue','Nguyen Van Tram','2000-10-05','0972388406',0,'https://www.facebook.com/hoa.210596','anh5.png'),('e35d7ce0-b180-11ec-b909-0242ac120002','haiprono1','hoaratlapro','Nguoi thue','Nguyen Van Hai','2000-10-04','0972388407',1,'https://www.facebook.com/hoa.210596','anh6.png');
+INSERT INTO `table_user` VALUES ('0436e2cd-af95-42c7-8995-f26df0488100','dinhtho@gmail.com','$2a$10$bzSG1bllTdKODpsBGfu0E.U8pS9XJ807dxTBMSLOalMQX6ob12XlW','1','Đinh Thọ','2000-03-15','0986454567',0,'facebook.com/dinhtho','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F7c200a80a31f4b3355e33e2bfbeda6af.jpg?alt=media&token=e58a59e3-0020-4c43-bba8-9bda99b56d86'),('2895d968-a0fe-41c3-b60f-f832de762243','huunhu@gmail.com','$2a$10$mGcW3fBg6PuEHgF.TcXfSOSpZ8H9W2Og.VD3K92C2WANJ9W3PmEtK','1','Hữu Như','2000-05-16','0985647643',1,'facebook.com/huunhu','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F714cc8226aaeb4d55324651d023fb402.jpg?alt=media&token=87497a2d-40ef-4b3b-a1b9-d253b7d1fbe2'),('442d1f93-098b-4c50-b003-72445bc17d51','xuantien@gmail.com','$2a$10$R23/ptrF6menDz0ru5BPGO.EjW65NBp1SPQF8VstjgWDTm.rcS6hi','2','Xuân Tiến','2019-04-11','0986556756',0,'facebook.com/xuantien','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fdownload%20(3).jpg?alt=media&token=cd8bcb17-7690-4709-b5a6-ef9ae804b590'),('6316ebf0-a9e2-455f-8fa6-059a7d214137','vanlam@gmail.com','$2a$10$IBDaTiP4rxJjvZMJwEq5OODBMRTv9XPX6ezNwypB.dv2j5OMtDc2K','1','Trần Văn Lâm','2022-04-19','0923456568',1,'fb.com/vanlam','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fdownload%20(1).jpg?alt=media&token=70d3c190-7075-4f56-aac5-f9e40c1bd735'),('6fa47ae2-2afe-411b-9f76-7b197e4e0df1','quochuy@gmail.com','$2a$10$6ml16l2n1N8/HI0y2z/q5uFlSVqf7n7nrqwXBd1rGwporPEZxOFIq','1','Quốc Huy','2000-03-10','0345757865',1,'facebook.com/quochuy','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fdownload%20(2).jpg?alt=media&token=8fc5fc1a-d55f-4371-a33b-c25ae15e872e'),('9176273c-fd14-4dbf-9aa8-26449b8a166e','admin@gmail.com','$2a$10$GqaO6DpApPeTBxgpJqp6jeSouQZmHay4Fwl.0yzjr1SCEilqp6iJa','0','Admin','2022-05-04','0987456743',1,'fb.com/admin','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fdownload.jpg?alt=media&token=ab0561d1-5e7b-4ff9-819e-dc58720ff8d7'),('932d1d12-0d15-4250-8320-0ae18854527e','vubac1@gmail.com','$2a$10$8nwaCTxISpzGfvTCICSft.txAF7J5X2Z5E8bSYLTKquP6vfjbGYhS','1','Vũ Xuân Bắc a','2000-05-02','0907654367',0,'facebook.com/vubac','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2F5fe9b013b5ad206ab88a71b4dedf34ca.jpg?alt=media&token=43db470b-c1eb-4a65-a267-fb080382210d'),('b1c4bac4-fc9c-45b5-a158-0a1d4adce054','uyen@gmail.com','$2a$10$eLe8GJA75LgKFdO/G/OSuu4o64npLBpZ2vP6Ph2T/kk9/RITSODRy','2','Thu Uyên a','2022-05-02','0987647687',0,'fb.com/vanlam','https://firebasestorage.googleapis.com/v0/b/room-social-network-upload.appspot.com/o/images%2Fdownload%20(1).jpg?alt=media&token=3ed95f90-e39a-4422-9392-9eac87c89bd6'),('bc3fce0e-3cef-4fd4-8092-c89ddedb0e36','van@gmail.com','$2a$10$lvbnqP9czTRU9StCfGgw8uuLrd7Cho6TOsN9kqeTSn33GDlPANQHm','Chu tro','trung van','2000-12-07','0972382323',0,'https://www.facebook.com/hoa.210596','anh8.png');
 /*!40000 ALTER TABLE `table_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,14 +296,15 @@ DROP TABLE IF EXISTS `waiting_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `waiting_list` (
-                                `waiting_list_id` varchar(40) NOT NULL,
-                                `user_id` varchar(40) DEFAULT NULL,
-                                `room_id` varchar(40) DEFAULT NULL,
-                                PRIMARY KEY (`waiting_list_id`),
-                                KEY `fk13` (`user_id`),
-                                KEY `fk14` (`room_id`),
-                                CONSTRAINT `fk13` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
-                                CONSTRAINT `fk14` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
+  `waiting_list_id` varchar(40) NOT NULL,
+  `user_id` varchar(40) DEFAULT NULL,
+  `room_id` varchar(40) DEFAULT NULL,
+  `time` datetime DEFAULT NULL,
+  PRIMARY KEY (`waiting_list_id`),
+  KEY `fk13` (`user_id`),
+  KEY `fk14` (`room_id`),
+  CONSTRAINT `fk13` FOREIGN KEY (`user_id`) REFERENCES `table_user` (`user_id`),
+  CONSTRAINT `fk14` FOREIGN KEY (`room_id`) REFERENCES `table_room` (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -313,7 +314,6 @@ CREATE TABLE `waiting_list` (
 
 LOCK TABLES `waiting_list` WRITE;
 /*!40000 ALTER TABLE `waiting_list` DISABLE KEYS */;
-INSERT INTO `waiting_list` VALUES ('c0d3c550-b183-11ec-b909-0242ac120002','c1ff7878-b180-11ec-b909-0242ac120002','08cf7798-b182-11ec-b909-0242ac120002'),('e3af489c-b183-11ec-b909-0242ac120002','c1ff7878-b180-11ec-b909-0242ac120002','0c8f4610-b182-11ec-b909-0242ac120002'),('e7c6630c-b183-11ec-b909-0242ac120002','c1ff7878-b180-11ec-b909-0242ac120002','6b20a12a-b181-11ec-b909-0242ac120002');
 /*!40000 ALTER TABLE `waiting_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,17 +325,17 @@ DROP TABLE IF EXISTS `ward`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ward` (
-                        `ward_id` int NOT NULL,
-                        `name_ward` varchar(50) DEFAULT NULL,
-                        `prefix_ward` varchar(20) DEFAULT NULL,
-                        `province_id` int DEFAULT NULL,
-                        `district_id` int DEFAULT NULL,
-                        PRIMARY KEY (`ward_id`),
-                        KEY `fk_war_district` (`province_id`),
-                        KEY `FKslko72wj5nauqvsgefqkvwpsb` (`district_id`),
-                        CONSTRAINT `fk_war_district` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
-                        CONSTRAINT `fk_ward_province` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
-                        CONSTRAINT `FKslko72wj5nauqvsgefqkvwpsb` FOREIGN KEY (`district_id`) REFERENCES `district` (`district_id`)
+  `ward_id` int NOT NULL,
+  `name_ward` varchar(50) DEFAULT NULL,
+  `prefix_ward` varchar(20) DEFAULT NULL,
+  `province_id` int DEFAULT NULL,
+  `district_id` int DEFAULT NULL,
+  PRIMARY KEY (`ward_id`),
+  KEY `fk_war_district` (`province_id`),
+  KEY `FKslko72wj5nauqvsgefqkvwpsb` (`district_id`),
+  CONSTRAINT `fk_war_district` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
+  CONSTRAINT `fk_ward_province` FOREIGN KEY (`province_id`) REFERENCES `province` (`province_id`),
+  CONSTRAINT `FKslko72wj5nauqvsgefqkvwpsb` FOREIGN KEY (`district_id`) REFERENCES `district` (`district_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -358,4 +358,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-15 14:03:20
+-- Dump completed on 2022-05-18 11:49:48

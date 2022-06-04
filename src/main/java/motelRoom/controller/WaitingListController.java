@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/waitinglist")
 public class WaitingListController {

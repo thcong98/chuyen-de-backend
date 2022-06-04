@@ -1,11 +1,14 @@
 package motelRoom.service.sharingDetailService;
 
+import motelRoom.dto.roomSharing.RoomSharingDetailDto;
 import motelRoom.dto.sharingDetail.SharingDetailCreateDto;
 import motelRoom.dto.sharingDetail.SharingDetailDetailDto;
+import motelRoom.dto.waitingList.WaitingListDetailDto;
 import motelRoom.entity.SharingDetailEntity;
 import motelRoom.mapper.SharingDetailMapper;
 import motelRoom.repository.SharingDetailRepository;
 import motelRoom.service.exceptionService.NotAcceptable;
+import motelRoom.service.exceptionService.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,16 +31,16 @@ public class SharingDetailServiceImpl implements SharingDetailService{
      * Create SharingDetail
      **/
     @Override
-    public String createSharingDetail(SharingDetailCreateDto sharingDetailCreateDto) {
+    public SharingDetailDetailDto createSharingDetail(SharingDetailCreateDto sharingDetailCreateDto) {
         UUID user = sharingDetailCreateDto.getUserId();
         UUID sharing = sharingDetailCreateDto.getSharingId();
         if(user == null || sharing == null){
-            return "Please enter information";
+            throw new NotAcceptable("bạn cần nhập đủ thông tin" );
         }
         else {
             SharingDetailEntity userDuplicate = sharingDetailRepository.findByUserId(sharingDetailCreateDto.getUserId());
             if (userDuplicate != null) {
-                return "User ID has existed!";
+                throw new NotAcceptable(" Id user đã tồn tại");
             }
             else {
                 SharingDetailEntity sharingDetailEntity =
@@ -47,7 +50,7 @@ public class SharingDetailServiceImpl implements SharingDetailService{
                 if(sharingDetailEntityCreate != null){
                     sharingDetailDetailDto = sharingDetailMapper.fromEntityToDto(sharingDetailEntityCreate);
                 }
-                return "Created!";
+                return sharingDetailDetailDto;
             }
         }
     }
@@ -69,7 +72,15 @@ public class SharingDetailServiceImpl implements SharingDetailService{
     public List<SharingDetailDetailDto> findAll() {
         return sharingDetailMapper.fromListEntitiesToDtos(sharingDetailRepository.findAll());
     }
-
+//    @Override
+//    public List<SharingDetailDetailDto> getAllByRoomId(UUID id) {
+//            List<SharingDetailDetailDto> list = sharingDetailMapper.fromListEntitiesToDtos(sharingDetailRepository.findByRoomIdOrderByDateTimeDesc(id));
+//            if(list.isEmpty()){
+//                throw new NotFoundException("Not find");
+//            }
+//            return list;
+//
+//    }
     /**
      * Update SharingDetail by id
      **/
@@ -96,8 +107,8 @@ public class SharingDetailServiceImpl implements SharingDetailService{
      * Delete SharingDetail by id
      **/
     @Override
-    public String deleteById(UUID sharingDetailId) {
-        sharingDetailRepository.deleteById(sharingDetailId);
+    public String deleteById(UUID id) {
+        sharingDetailRepository.deleteById(id);
         return "Deleted";
     }
 
