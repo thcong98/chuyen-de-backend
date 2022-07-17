@@ -1,0 +1,3 @@
+ALTER TABLE table_room
+    ADD nvarchar(200) title_room NOT NULL,
+    ADD date time_room,

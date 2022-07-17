@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,8 @@ public class RoomSharingEntity {
     @Column( name = "room_id", nullable = false)
     @Type( type = "uuid-char")
     private UUID roomId;
+    @Column(name = "description")
+    private String description;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @Cascade(value= {org.hibernate.annotations.CascadeType.DELETE})

@@ -7,6 +7,7 @@ import motelRoom.entity.addressEntity.WardEntity;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -43,6 +44,10 @@ public class RoomEntity {
     private String descriptionRoom;
     @Column(name="status_room")
     private int statusRoom;
+    @Column(name = "title_room")
+    private String titleRoom;
+    @Column(name="time_room")
+    private String timeRoom;
 
     /**relationship many room one province**/
     @ManyToOne

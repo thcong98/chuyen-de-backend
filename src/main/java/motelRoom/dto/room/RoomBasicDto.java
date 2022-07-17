@@ -7,6 +7,7 @@ import motelRoom.entity.UserEntity;
 import motelRoom.entity.addressEntity.ProvinceEntity;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ public class RoomBasicDto implements Serializable {
     private int districtId;
     private int wardId;
     private String street;
+    private String titleRoom;
     private float price;
     private float capacity;
     private String descriptionRoom;
@@ -26,4 +28,5 @@ public class RoomBasicDto implements Serializable {
     private UserEntity userEntity;
     private List<DocumentEntity> documentEntities;
     private ProvinceEntity provinceEntity;
+    private String timeRoom;
 }

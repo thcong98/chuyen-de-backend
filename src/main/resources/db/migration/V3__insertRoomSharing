@@ -1,0 +1,2 @@
+ALTER TABLE room_sharing
+    ADD varchar(200) description NOT NULL,

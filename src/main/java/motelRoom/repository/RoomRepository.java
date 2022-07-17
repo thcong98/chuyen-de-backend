@@ -2,6 +2,7 @@ package motelRoom.repository;
 
 import motelRoom.dto.room.RoomDetailDto;
 import motelRoom.entity.RoomEntity;
+import motelRoom.entity.WaitingListEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

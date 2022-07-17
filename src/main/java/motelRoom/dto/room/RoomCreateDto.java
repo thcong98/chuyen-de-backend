@@ -11,9 +11,11 @@ public class RoomCreateDto implements Serializable {
     private int districtId;
     private int wardId;
     private String street;
+    private String titleRoom;
     private float price;
     private float capacity;
     private String descriptionRoom;
     private Integer statusRoom;
+    private String timeRoom;
 }
 
